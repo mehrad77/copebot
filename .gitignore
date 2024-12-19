@@ -1,3 +1,33 @@
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+### Node ###
 # Logs
 logs
 *.log
@@ -41,6 +71,10 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+
+# Moved from ./templates for ignoring all locks in templates
+templates/**/*-lock.*
+templates/**/*.lock
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
@@ -128,3 +162,51 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+### Node Patch ###
+# Serverless Webpack directories
+.webpack/
+
+# Optional stylelint cache
+
+# SvelteKit build / generate output
+.svelte-kit
+
+# End of https://www.toptal.com/developers/gitignore/api/node,macos
+
+wrangler-dist/
+miniflare-dist
+packages/wrangler/wrangler.toml
+packages/prerelease-registry/_worker.bundle
+packages/wranglerjs-compat-webpack-plugin/lib
+.wrangler-1-cache
+emitted-types/
+_routes.generated.json
+packages/quick-edit/vscode
+packages/quick-edit/web
+
+# Vendored npm dependencies
+!vendor/*.tgz
+
+# IntelliJ
+.idea/
+
+# VSCode Theme
+*.vsix
+vendor/vscode
+
+.wrangler/
+
+# Turbo Repo
+build/**
+dist/**
+.next/**
+.turbo
+
+# Runtime dependencies report
+runtime-versions.md
+
+.dev.vars
+.env
+
+/node_modules/
