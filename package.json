@@ -14,20 +14,20 @@
   "dependencies": {
     "@cfworker/web": "^1.14.0",
     "cfworker-middleware-telegraf": "^2.0.2",
-    "telegraf": "^4.13.1"
+    "telegraf": "^4.16.3"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20230419.0",
     "@typescript-eslint/eslint-plugin": "^6.6.0",
     "@typescript-eslint/parser": "^6.6.0",
-    "dotenv": "^16.3.1",
+    "dotenv": "^16.4.7",
     "eslint": "^8.49.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
     "node-polyfill-webpack-plugin": "^2.0.1",
-    "prettier": "3.0.3",
-    "ts-loader": "^9.4.4",
-    "typescript": "^5.2.2",
+    "prettier": "3.4.2",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.7.2",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4"
   }
