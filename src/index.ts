@@ -2,7 +2,7 @@ import { Telegraf } from 'telegraf';
 import { Application, Router } from '@cfworker/web';
 import createTelegrafMiddleware from 'cfworker-middleware-telegraf';
 
-// @ts-ignore
+// @ts-expect-error - Cloudflare Workers global
 const bot = new Telegraf(self.BOT_TOKEN);
 
 bot.start((ctx) => {
@@ -16,6 +16,6 @@ bot.hears('hi', (ctx) => ctx.reply('Hey there'));
 // Do not forget to set environment variables BOT_TOKEN and SECRET_PATH on your worker
 
 const router = new Router();
-// @ts-ignore
+// @ts-expect-error - Cloudflare Workers global
 router.post(`/${self.SECRET_PATH}`, createTelegrafMiddleware(bot));
 new Application().use(router.middleware).listen();
