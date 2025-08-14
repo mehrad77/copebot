@@ -17,5 +17,7 @@ bot.hears('hi', (ctx) => ctx.reply('Hey there'));
 
 const router = new Router();
 // @ts-expect-error - Cloudflare Workers global
+console.log(`Setting webhook to: ${self.BOT_DOMAIN}/${self.SECRET_PATH}`);
+// @ts-expect-error - Cloudflare Workers global
 router.post(`/${self.SECRET_PATH}`, createTelegrafMiddleware(bot));
 new Application().use(router.middleware).listen();

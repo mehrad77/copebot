@@ -207,6 +207,7 @@ dist/**
 runtime-versions.md
 
 .dev.vars
+*.vars
 .env
 
 /node_modules/

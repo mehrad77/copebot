@@ -1,6 +1,7 @@
-name = "telegraf-cloudflare-telegram-bot-boilerplate"
+name = "copebot"
 main = "dist/index.ts"
 env = { }
+compatibility_date = "2025-08-13"
 
 [triggers]
 crons = [ ]
