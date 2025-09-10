@@ -178,9 +178,28 @@ Type /help to see what I can do!`);
 // Your code here, but do not `bot.launch()`
 // Do not forget to set environment variables BOT_TOKEN, SECRET_PATH, and DB binding on your worker
 
-const router = new Router();
-// @ts-expect-error - Cloudflare Workers global
-console.log(`Setting webhook to: ${self.BOT_DOMAIN}/${self.SECRET_PATH}`);
-// @ts-expect-error - Cloudflare Workers global
-router.post(`/${self.SECRET_PATH}`, createTelegrafMiddleware(bot));
-new Application().use(router.middleware).listen();
+// Export default object with fetch handler for ES Module format
+export default {
+	async fetch(request: any, env: any): Promise<any> {
+		// Set global variables from environment
+		// @ts-expect-error - Cloudflare Workers global
+		self.BOT_TOKEN = env.BOT_TOKEN;
+		// @ts-expect-error - Cloudflare Workers global
+		self.SECRET_PATH = env.SECRET_PATH;
+		// @ts-expect-error - Cloudflare Workers global
+		self.BOT_DOMAIN = env.BOT_DOMAIN;
+		// @ts-expect-error - Cloudflare Workers global
+		self.DB = env.DB;
+
+		console.log(`Setting webhook to: ${env.BOT_DOMAIN}/${env.SECRET_PATH}`);
+
+		// Create the router and application
+		const router = new Router();
+		router.post(`/${env.SECRET_PATH}`, createTelegrafMiddleware(bot));
+		const app = new Application().use(router.middleware);
+
+		// The @cfworker/web Application has a method to handle requests directly
+		// @ts-expect-error - cfworker Application method
+		return app.handleRequest(request);
+	},
+};

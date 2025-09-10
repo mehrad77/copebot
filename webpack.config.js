@@ -20,6 +20,7 @@ export default {
 		library: {
 			type: 'module',
 		},
+		clean: true,
 	},
 	experiments: {
 		outputModule: true,
@@ -50,6 +51,7 @@ export default {
 	optimization: {
 		minimize: false,
 	},
+	devtool: false,
 	performance: {
 		hints: false,
 	},
