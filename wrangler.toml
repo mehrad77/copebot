@@ -1,7 +1,7 @@
 name = "copebot"
-main = "dist/index.ts"
-env = { }
+main = "dist/worker.js"
 compatibility_date = "2025-08-13"
+compatibility_flags = ["nodejs_compat"]
 
 [triggers]
 crons = [ ]
@@ -11,8 +11,6 @@ BOT_DOMAIN = "https://copebot.mehrad77.workers.dev"
 SECRET_PATH = "me"
 
 # D1 Database configuration
-# Run: wrangler d1 create copebot-users
-# Then update the database_id below with the generated ID
 [[d1_databases]]
 binding = "DB"
 database_name = "copebot-users"
