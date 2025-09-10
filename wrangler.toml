@@ -10,6 +10,13 @@ crons = [ ]
 BOT_DOMAIN = "https://copebot.mehrad77.workers.dev"
 SECRET_PATH = "me"
 
+# D1 Database configuration
+# Run: wrangler d1 create copebot-users
+# Then update the database_id below with the generated ID
+[[d1_databases]]
+binding = "DB"
+database_name = "copebot-users"
+database_id = "282911c4-99d4-4c61-93cd-b1b6e34c8688"
 
 [observability]
 enabled = true
