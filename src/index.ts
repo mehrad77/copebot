@@ -1,5 +1,4 @@
 import { Telegraf } from 'telegraf';
-import { Application, Router } from '@cfworker/web';
 import createTelegrafMiddleware from 'cfworker-middleware-telegraf';
 import { UserService } from './database/userService';
 import { TelegramUser } from './types/user';
@@ -193,13 +192,23 @@ export default {
 
 		console.log(`Setting webhook to: ${env.BOT_DOMAIN}/${env.SECRET_PATH}`);
 
-		// Create the router and application
-		const router = new Router();
-		router.post(`/${env.SECRET_PATH}`, createTelegrafMiddleware(bot));
-		const app = new Application().use(router.middleware);
+		// Handle the request directly
+		try {
+			const url = request.url;
+			const method = request.method;
 
-		// The @cfworker/web Application has a method to handle requests directly
-		// @ts-expect-error - cfworker Application method
-		return app.handleRequest(request);
+			// Check if this matches our webhook path
+			if (method === 'POST' && url.includes(`/${env.SECRET_PATH}`)) {
+				// This should be handled by our telegraf middleware
+				const middleware = createTelegrafMiddleware(bot);
+				return await middleware(request, env);
+			}
+
+			// For other requests, return a simple response
+			return new globalThis.Response('Bot is running', { status: 200 });
+		} catch (error) {
+			console.error('Error handling request:', error);
+			return new globalThis.Response('Internal Server Error', { status: 500 });
+		}
 	},
 };
