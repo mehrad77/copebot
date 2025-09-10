@@ -7,6 +7,9 @@ compatibility_date = "2025-08-13"
 crons = [ ]
 
 [vars]
+BOT_DOMAIN = "https://copebot.mehrad77.workers.dev"
+SECRET_PATH = "me"
+
 
 [observability]
 enabled = true
