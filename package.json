@@ -2,14 +2,15 @@
 	"name": "copebot",
 	"version": "0.0.0",
 	"private": false,
+	"type": "module",
   "scripts": {
     "setup": "npm install -g wrangler",
     "postsetup": "wrangler login",
-    "predeploy": "webpack -c webpack.config.ts",
-    "prestart": "webpack -c webpack.config.ts",
+    "predeploy": "webpack -c webpack.config.js",
+    "prestart": "webpack -c webpack.config.js",
     "deploy": "wrangler deploy dist/worker.js",
     "start": "wrangler dev dist/worker.js --port 8443 --local-protocol https",
-    "set-webhook": "ts-node set-webhook.ts"
+    "set-webhook": "node --loader ts-node/esm set-webhook.ts"
   },
   "dependencies": {
     "@cfworker/web": "^1.14.0",

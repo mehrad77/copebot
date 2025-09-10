@@ -1,11 +1,17 @@
-require('dotenv').config({
+import { config } from 'dotenv';
+config({
 	path: './.dev.vars',
 });
-const path = require('path');
-const { DefinePlugin } = require('webpack');
-const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
+import path from 'path';
+import { fileURLToPath } from 'url';
+import webpack from 'webpack';
+import NodePolyfillPlugin from 'node-polyfill-webpack-plugin';
 
-module.exports = {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const { DefinePlugin } = webpack;
+
+export default {
 	entry: path.resolve(__dirname, 'src/index.ts'),
 	target: 'webworker',
 	output: {
